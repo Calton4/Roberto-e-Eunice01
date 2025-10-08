@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmação - Casamento de Roberto & Eunice 💕</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #fdeff9, #ec38bc, #7303c0);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      width: 100%;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #7303c0;
+    }
+
+    .verse {
+      font-style: italic;
+      color: #555;
+      margin: 10px auto;
+      max-width: 500px;
+      font-size: 0.95em;
+    }
+
+    section {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      margin: 20px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      z-index: 1;
+    }
+
+    input, button, select {
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+    }
+
+    input, select {
+      width: 90%;
+      background-color: #f5f5f5;
+    }
+
+    button {
+      background-color: #7303c0;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 95%;
+    }
+
+    button:hover {
+      background-color: #ec38bc;
+    }
+
+    #mensagem {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fdeff9;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      max-width: 90%;
+      width: 400px;
+      text-align: center;
+      color: #7303c0;
+      font-size: 1em;
+      display: none;
+      z-index: 999;
+    }
+
+    footer {
+      background: rgba(255,255,255,0.9);
+      padding: 15px;
+      margin-top: 20px;
+      font-weight: bold;
+      border-top: 2px solid #ec38bc;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      color: #7303c0;
+      width: 100%;
+    }
+
+    @media(max-width: 450px) {
+      section {
+        width: 95%;
+        padding: 15px;
+      }
+      #mensagem {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>💍 Casamento de Roberto & Eunice 💕</h1>
+    <p class="verse">"O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha."  
+    <br><strong>— 1 Coríntios 13:4 💖</strong></p>
+    <h3>Confirme a sua presença até 5 de abril de 2026</h3>
+  </header>
+
+  <section>
+    <h2>🎀 Confirmação de Presença 🎀</h2>
+    <p>Preencha os seus dados abaixo para confirmar sua presença neste dia especial!</p>
+    <input type="text" id="nomeConvidado" placeholder="Seu nome completo" required>
+    <p>Tem acompanhante?</p>
+    <select id="temAcompanhante" onchange="mostrarCampoAcompanhante()">
+      <option value="nao">Não</option>
+      <option value="sim">Sim</option>
+    </select>
+    <div id="acompanhanteCampo" style="display:none;">
+      <input type="text" id="nomeAcompanhante" placeholder="Nome do acompanhante">
+    </div>
+    <button onclick="confirmarPresenca()">Confirmar Presença 💌</button>
+  </section>
+
+  <div id="mensagem"></div>
+
+  <footer>
+    © 2026 - Casamento de Roberto & Eunice 💕
+  </footer>
+
+  <script>
+    function mostrarCampoAcompanhante() {
+      const select = document.getElementById("temAcompanhante").value;
+      document.getElementById("acompanhanteCampo").style.display = select === "sim" ? "block" : "none";
+    }
+
+    function confirmarPresenca() {
+      const nome = document.getElementById("nomeConvidado").value.trim();
+      const temAcompanhante = document.getElementById("temAcompanhante").value;
+      const acompanhante = temAcompanhante === "sim" ? document.getElementById("nomeAcompanhante").value.trim() : "";
+
+      if (nome === "") {
+        alert("Por favor, insira o seu nome.");
+        return;
+      }
+
+      // Salvar no localStorage
+      let lista = JSON.parse(localStorage.getItem("confirmados")) || [];
+      lista.push(nome);
+      if (acompanhante) lista.push(acompanhante);
+      localStorage.setItem("confirmados", JSON.stringify(lista));
+
+      // Mostrar mensagem centralizada
+      const mensagemDiv = document.getElementById("mensagem");
+      mensagemDiv.innerHTML = `
+        <h3>💖 Obrigado, ${nome}! 💖</h3>
+        <p>
+          A tua presença foi confirmada com sucesso!<br><br>
+          Ficamos muito felizes por partilhares connosco este momento de amor e união.<br><br>
+          Esperamos por ti no dia <strong>5 de Maio de 2026</strong>, com o coração cheio de gratidão e alegria!<br><br>
+          — <em>Com carinho, Roberto & Eunice 💕</em>
+        </p>
+      `;
+      mensagemDiv.style.display = "block";
+
+      // Fecha a página após 60 segundos (1 minuto)
+      setTimeout(() => window.close(), 60000);
+
+      // Limpar campos
+      document.getElementById("nomeConvidado").value = "";
+      document.getElementById("temAcompanhante").value = "nao";
+      document.getElementById("acompanhanteCampo").style.display = "none";
+      document.getElementById("nomeAcompanhante").value = "";
+    }
+  </script>
+</body>
+</html>
