@@ -208,39 +208,40 @@
       }
     }
   </script>
+
+  <!-- Formulário de Confirmação -->
+  <form id="confirmacao-form">
+    <label>Nome completo:</label>
+    <input type="text" name="nome" required>
+
+    <label>Vai ao casamento?</label>
+    <select name="presenca" required>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+    </select>
+
+    <button type="submit">Confirmar Presença</button>
+  </form>
+
+  <p id="mensagem"></p>
+
+  <script>
+    document.getElementById("confirmacao-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // 🔗 Link do teu Apps Script (substitui por teu link real)
+      const scriptURL = "https://script.google.com/macros/s/AKfycbz1234567890ABCDEFGH1234567890/exec";
+
+      fetch(scriptURL, { method: "POST", body: new FormData(this) })
+        .then(() => {
+          const msg = document.getElementById("mensagem");
+          msg.textContent = "✅ Confirmação enviada com sucesso! Obrigado!";
+          setTimeout(() => msg.textContent = "", 60000);
+          this.reset();
+        })
+        .catch(error => alert("❌ Erro ao enviar confirmação. Tenta novamente."));
+    });
+  </script>
 </body>
 </html>
-
-<form id="confirmacao-form">
-  <label>Nome completo:</label>
-  <input type="text" name="nome" required>
-
-  <label>Vai ao casamento?</label>
-  <select name="presenca" required>
-    <option value="Sim">Sim</option>
-    <option value="Não">Não</option>
-  </select>
-
-  <button type="submit">Confirmar Presença</button>
-</form>
-
-<p id="mensagem"></p>
-
-<script>
-document.getElementById("confirmacao-form").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const scriptURL = "AQUI_ENTRA_TEU_LINK_DO_APPSCRIPT"; // <--- substitui pelo link do passo 2
-
-  fetch(scriptURL, { method: "POST", body: new FormData(this) })
-    .then(() => {
-      const msg = document.getElementById("mensagem");
-      msg.textContent = "✅ Confirmação enviada com sucesso! Obrigado!";
-      setTimeout(() => msg.textContent = "", 60000); // fica 1 minuto na tela
-      this.reset();
-    })
-    .catch(error => alert("❌ Erro ao enviar confirmação. Tenta novamente."));
-});
-</script>
-
 
