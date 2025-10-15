@@ -5,68 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casamento de Roberto & Eunice</title>
   <style>
+    /* 🌸 Estilo geral */
     body {
-      font-family: 'Georgia', serif;
-      background-color: #fffaf0;
-      color: #333;
+      font-family: 'Poppins', 'Georgia', serif;
+      background: linear-gradient(to bottom right, #fffaf7, #fdeeee);
+      color: #444;
       text-align: center;
-      padding: 50px 20px;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
+
+    /* 🌿 Container central */
+    .container {
+      background: #ffffffcc;
+      backdrop-filter: blur(6px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(183, 110, 121, 0.2);
+      max-width: 800px;
+      margin: 30px;
+    }
+
+    /* 💞 Cabeçalho */
     h1 {
       color: #b76e79;
-      font-size: 2.5em;
+      font-size: 3em;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      font-family: 'Great Vibes', cursive;
     }
+
+    .subtitulo {
+      font-size: 1.3em;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    /* ✨ Frases */
     p {
       font-size: 1.2em;
-      line-height: 1.6;
-      margin: 20px auto;
-      max-width: 700px;
+      line-height: 1.7;
+      margin: 25px auto;
+      max-width: 680px;
     }
+
     .versiculo {
       font-style: italic;
-      margin-top: 30px;
+      margin-top: 35px;
       color: #555;
+      border-left: 4px solid #b76e79;
+      padding-left: 15px;
     }
+
+    /* 🌺 Botão */
     .botao {
       display: inline-block;
       margin-top: 40px;
-      padding: 12px 25px;
+      padding: 14px 35px;
       background-color: #b76e79;
       color: white;
-      border-radius: 25px;
+      border-radius: 30px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 1.1em;
+      box-shadow: 0 4px 12px rgba(183, 110, 121, 0.4);
+      transition: all 0.3s ease;
     }
+
+    .botao:hover {
+      background-color: #c57b85;
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(183, 110, 121, 0.5);
+    }
+
+    /* 💐 Rodapé */
     footer {
-      margin-top: 50px;
-      font-size: 0.9em;
+      margin-top: 60px;
+      font-size: 0.95em;
       color: #777;
     }
+
+    /* ✨ Animação suave ao carregar */
+    .container {
+      animation: fadeIn 1.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Roberto & Eunice</h1>
+  <div class="container">
+    <h1>Roberto & Eunice</h1>
+    <p class="subtitulo">Com imensa alegria, convidamos você a celebrar o amor connosco 💕</p>
 
-  <p>
-    “O casamento não é a união de duas pessoas perfeitas, que nasceram uma para a outra.
-    Mas a união de duas pessoas que se compreendem, que se aceitam, e que apenas por amor
-    desejam ser sempre melhores uma para a outra.” <br><br>
-    <strong>— Augusto Branco</strong>
-  </p>
+    <p>
+      “O casamento não é a união de duas pessoas perfeitas, que nasceram uma para a outra.
+      Mas a união de duas pessoas que se compreendem, que se aceitam, e que apenas por amor
+      desejam ser sempre melhores uma para a outra.” <br><br>
+      <strong>— Augusto Branco</strong>
+    </p>
 
-  <p class="versiculo">
-    “Porém, desde o princípio da criação, Deus os fez homem e mulher.
-    Por isso deixará o homem a seu pai e mãe e unir-se-á à sua mulher,
-    e serão os dois uma só carne. Assim, já não são dois, mas uma só carne.
-    Portanto, o que Deus uniu não o separe o homem.” <br>
-    <strong>— Marcos 10:6–10</strong>
-  </p>
+    <p class="versiculo">
+      “Porém, desde o princípio da criação, Deus os fez homem e mulher.
+      Por isso deixará o homem a seu pai e mãe e unir-se-á à sua mulher,
+      e serão os dois uma só carne. Assim, já não são dois, mas uma só carne.
+      Portanto, o que Deus uniu não o separe o homem.” <br>
+      <strong>— Marcos 10:6–10</strong>
+    </p>
 
-  <!-- ✅ ESTE BOTÃO LEVA À PÁGINA DO FORMULÁRIO -->
-  <a class="botao" href="noivos.html">Confirmar Presença</a>
+    <!-- 🌷 Botão para o formulário -->
+    <a class="botao" href="noivos.html">Confirmar Presença</a>
 
-  <footer>
-    Feito com amor por Roberto & Eunice 💕
-  </footer>
+    <footer>
+      Feito com amor por Roberto & Eunice 💞
+    </footer>
+  </div>
 </body>
 </html>
+
