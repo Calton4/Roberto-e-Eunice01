@@ -68,6 +68,53 @@
       color: #b46b6b;
       margin: 10px 0;
     }
+
+    button {
+      background-color: #b46b6b;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #a14e4e;
+    }
+
+    .form-area {
+      display: none;
+      margin-top: 40px;
+      background-color: #fff6f6;
+      border-radius: 15px;
+      padding: 30px;
+    }
+
+    input, select, textarea {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #d1b6b6;
+      font-size: 1em;
+    }
+
+    input[type="submit"] {
+      background-color: #b46b6b;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #a14e4e;
+    }
   </style>
 </head>
 <body>
@@ -89,16 +136,42 @@
     <p>que selarão o seu amor em sagrado matrimónio.</p>
 
     <div class="details">
-      <p>📅 <strong>Data:</strong> [Inserir data do casamento]</p>
-      <p>⏰ <strong>Hora:</strong> [Inserir hora da cerimónia]</p>
-      <p>📍 <strong>Local:</strong> [Inserir local do evento]</p>
-      <p>Após a cerimónia, os noivos e seus familiares terão o prazer de receber os convidados para a receção.</p>
+      <p>📅 <strong>Data:</strong> 21 de Dezembro de 2025</p>
+      <p>⏰ <strong>Hora:</strong> 14h00</p>
+      <p>📍 <strong>Local:</strong> Igreja de São José, Maputo</p>
+      <p>Após a cerimónia, os noivos e seus familiares terão o prazer de receber os convidados para a receção no Salão Estrela Dourada.</p>
     </div>
 
     <div class="footer">
       ✨ Contamos com a sua presença para partilhar connosco este momento de amor, fé e alegria. ✨
     </div>
+
+    <button onclick="mostrarFormulario()">Confirmar Presença</button>
+
+    <div id="formulario" class="form-area">
+      <h3>Confirme a sua presença</h3>
+      <form>
+        <input type="text" name="nome" placeholder="Seu nome completo" required><br>
+        <input type="text" name="telefone" placeholder="Contacto (ex: +258...)" required><br>
+        <select name="confirmacao" required>
+          <option value="">-- Selecione --</option>
+          <option value="Confirmado">Confirmarei presença</option>
+          <option value="Nao vai">Não poderei comparecer</option>
+        </select><br>
+        <input type="number" name="acompanhantes" min="0" placeholder="Nº de acompanhantes"><br>
+        <textarea name="mensagem" rows="3" placeholder="Mensagem aos noivos (opcional)"></textarea><br>
+        <input type="submit" value="Enviar Confirmação">
+      </form>
+    </div>
   </div>
+
+  <script>
+    function mostrarFormulario() {
+      document.getElementById("formulario").style.display = "block";
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
 
 </body>
 </html>
+
